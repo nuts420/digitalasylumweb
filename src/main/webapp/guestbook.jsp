@@ -13,7 +13,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
-  
+  <head>
+    <link type="text/css" rel="stylesheet" href="/css/main.css" />
+  </head>
   <body>
     
     <%
