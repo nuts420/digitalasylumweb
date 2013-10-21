@@ -4,6 +4,22 @@
    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
    version="2.5">
     <servlet>
+        <servlet-name>guestbook</servlet-name>
+        <servlet-class>us.digitalasylum.GuestbookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>guestbook</servlet-name>
+        <url-pattern>/guestbook</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>sign</servlet-name>
+        <servlet-class>us.digitalasylum.SignGuestbookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sign</servlet-name>
+        <url-pattern>/sign</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>textsearch</servlet-name>
         <servlet-class>com.google.appengine.demos.search.TextSearchServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
@@ -12,5 +28,8 @@
         <servlet-name>textsearch</servlet-name>
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>guestbook.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>
 

@@ -2,6 +2,9 @@ package us.digitalasylum;
 
 import java.io.IOException;
 //import javax.servlet.http.*;
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +15,18 @@ public class GuestbookServlet extends HttpServlet
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
-        resp.setContentType("text/plain");
-        resp.getWriter().println("Hello, world");
-    }
+        UserService userService = UserServiceFactory.getUserService();
+        User user = userService.getCurrentUser();
+
+        if (user != null) {
+            resp.setContentType("text/plain");
+            resp.getWriter().println("Hello, " + user.getNickname());
+        } else {
+            resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
+        }
+
+            
+            
+
+   }
 }
