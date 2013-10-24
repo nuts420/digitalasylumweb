@@ -7,10 +7,10 @@
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
  
-  <context:component-scan base-package="us.digitalasylum.controller" />
+  <context:component-scan base-package="us.digitalasylum.*" />
+  <context:annotation-config />
  
-  <bean
-    class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     <property name="prefix">
       <value>/WEB-INF/pages/</value>
     </property>
@@ -18,5 +18,18 @@
       <value>.jsp</value>
     </property>
   </bean>
- 
+          
+  <bean class="com.googlecode.objectify.spring.ObjectifyFactoryBean" p:basePackage="us.digitalasylum.domain" />  
+    
+    <!-- if we have to avoid the component scan
+     <bean class="com.googlecode.objectify.spring.ObjectifyFactoryBean">
+  <property name="classes">
+    <list>
+      <value>com.mycompany.domain.Person</value>
+      <value>com.mycompany.domain.Address</value>
+    </list>
+  </property>
+</bean>
+      -->    
+                    
 </beans>
